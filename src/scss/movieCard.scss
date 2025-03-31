@@ -1,0 +1,13 @@
+.card {
+  max-width: 12.5rem;
+  gap: 0.3125rem;
+}
+
+.card-text {
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 2px;
+}

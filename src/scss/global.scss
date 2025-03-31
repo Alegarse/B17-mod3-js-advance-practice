@@ -1,0 +1,11 @@
+#app {
+  margin: 0 auto;
+  max-width: 80rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}

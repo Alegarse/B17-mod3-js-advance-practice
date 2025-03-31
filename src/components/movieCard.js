@@ -7,10 +7,16 @@ import { apiConfig } from "../api/apiConfig";
  */
 function createMoviePoster(imageUrl) {
     const movieImgElement = document.createElement('img')
-    const InitPosterPath = `${apiConfig.posterBaseUrl}${imageUrl}`
-    movieImgElement.setAttribute('src', InitPosterPath);
-    movieImgElement.classList = 'movie-poster'
+    const initPosterPath = `${apiConfig.posterBaseUrl}${imageUrl}`
+    movieImgElement.setAttribute('src', initPosterPath);
+    movieImgElement.classList = 'card-img-top'
     return movieImgElement
+}
+
+function createContentTextMovieCard() {
+    const movieContainerElement = document.createElement('div')
+    movieContainerElement.classList = 'card-body'
+    return movieContainerElement
 }
 
 /**
@@ -19,9 +25,9 @@ function createMoviePoster(imageUrl) {
  * @returns Element h3 with title
  */
 function createMovieTitle(title) {
-    const movieTitleElement = document.createElement('h3')
+    const movieTitleElement = document.createElement('h5')
     movieTitleElement.textContent = title
-    movieTitleElement.classList = 'movie-title'
+    movieTitleElement.classList = 'card-title'
     return movieTitleElement
 }
 
@@ -33,7 +39,7 @@ function createMovieTitle(title) {
 export function createMovieOverview(overview) {
     const movieOverviewElement = document.createElement('p')
     movieOverviewElement.textContent = overview
-    movieOverviewElement.classList = 'movie-overview'
+    movieOverviewElement.classList = 'card-text'
     return movieOverviewElement
 }
 
@@ -44,10 +50,14 @@ export function createMovieOverview(overview) {
  */
 export function addMovieCardElement(movie) {
     const movieCardElement = document.createElement('div')
-    movieCardElement.classList = 'movie-card'
 
+    movieCardElement.classList = 'card'
     movieCardElement.appendChild(createMoviePoster(movie.poster_path))
-    movieCardElement.appendChild(createMovieTitle(movie.title))
+
+    const movieContainerElement = createContentTextMovieCard()
+    movieContainerElement.appendChild(createMovieTitle(movie.title))
+
+    movieCardElement.appendChild(movieContainerElement)
 
     return movieCardElement
 }
