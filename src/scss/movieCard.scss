@@ -1,26 +1,22 @@
 .row {
   display: flex;
   gap: 15px;
-  --bs-gutter-x: 0
+  //--bs-gutter-x: 0
 }
 
 .movie-card {
   display: flex;
   flex-direction: column;
-  background-color: #282caa10;
-  border: 1px solid grey;
-  border-radius: 10px;
-  max-width: 220px;
+  border-radius: 5px;
   gap: 10px;
 }
 
 .movie-poster {
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .movie-title {
   display: -webkit-box;
-  text-align: center;
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;

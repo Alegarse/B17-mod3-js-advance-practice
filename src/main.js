@@ -1,14 +1,11 @@
 import './scss/style.scss'
 import { movieType, getMovieListData } from './api/api.js'
-import { addMovieCardElement,addHeader } from './components/components.js'
+import { addMovieCardElement } from './components/components.js'
 
 // 0. Entry point
 const containerElement = document.querySelector('#app')
 
-// 1. Import header section
-containerElement.appendChild(addHeader())
-
-//2. Import movie list grid
+//1. Import movie list grid
 async function addMovieListGrid() {
 
   // API Petition with movies data

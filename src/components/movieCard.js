@@ -19,10 +19,17 @@ function createMoviePoster(imageUrl) {
  * @returns Element h3 with title
  */
 function createMovieTitle(title) {
-    const movieTitleElement = document.createElement('h5')
+    const movieTitleElement = document.createElement('h4')
     movieTitleElement.textContent = title
     movieTitleElement.classList = 'movie-title'
     return movieTitleElement
+}
+
+function createMovieInfo(info) {
+    const movieInfoElement = document.createElement('p')
+    movieInfoElement.classList = 'movie-info'
+    movieInfoElement.textContent = `Valoración: ${(info.rating).toFixed(1)} | Año: ${info.date}`
+    return movieInfoElement
 }
 
 /**
@@ -30,11 +37,20 @@ function createMovieTitle(title) {
  * @param {*} description 
  * @returns Element p with description 
  */
-export function createMovieOverview(overview) {
+export function createMovieOverview(overview, details) {
+    const movieOverviewContainer = document.createElement('div')
+
     const movieOverviewElement = document.createElement('p')
+    if (details) {
+        const movieTitleOverviewElement = document.createElement('h5')
+        movieTitleOverviewElement.textContent = 'Sinopsis:'
+        movieOverviewContainer.appendChild(movieTitleOverviewElement)
+    }
     movieOverviewElement.textContent = overview
     movieOverviewElement.classList = 'movie-overview'
-    return movieOverviewElement
+    movieOverviewContainer.appendChild(movieOverviewElement)
+
+    return movieOverviewContainer
 }
 
 /**
@@ -50,7 +66,7 @@ export function addMovieCardElement(movie) {
     movieCardElement.appendChild(createMoviePoster(movie.poster_path))
     movieCardElement.appendChild(createMovieTitle(movie.title))
 
-    movieCardElement.appendChild(createMovieOverview(movie.overview))
+    movieCardElement.appendChild(createMovieOverview(movie.overview,true))
 
     return movieCardElement
 }
