@@ -9,14 +9,8 @@ function createMoviePoster(imageUrl) {
     const movieImgElement = document.createElement('img')
     const initPosterPath = `${apiConfig.posterBaseUrl}${imageUrl}`
     movieImgElement.setAttribute('src', initPosterPath);
-    movieImgElement.classList = 'card-img-top'
+    movieImgElement.classList = 'movie-poster'
     return movieImgElement
-}
-
-function createContentTextMovieCard() {
-    const movieContainerElement = document.createElement('div')
-    movieContainerElement.classList = 'card-body'
-    return movieContainerElement
 }
 
 /**
@@ -27,7 +21,7 @@ function createContentTextMovieCard() {
 function createMovieTitle(title) {
     const movieTitleElement = document.createElement('h5')
     movieTitleElement.textContent = title
-    movieTitleElement.classList = 'card-title'
+    movieTitleElement.classList = 'movie-title'
     return movieTitleElement
 }
 
@@ -39,7 +33,7 @@ function createMovieTitle(title) {
 export function createMovieOverview(overview) {
     const movieOverviewElement = document.createElement('p')
     movieOverviewElement.textContent = overview
-    movieOverviewElement.classList = 'card-text'
+    movieOverviewElement.classList = 'movie-overview'
     return movieOverviewElement
 }
 
@@ -49,15 +43,14 @@ export function createMovieOverview(overview) {
  * @returns Element card for movie
  */
 export function addMovieCardElement(movie) {
-    const movieCardElement = document.createElement('div')
+    const movieCardElement = document.createElement('col')
 
-    movieCardElement.classList = 'card'
+    movieCardElement.classList = 'movie-card'
+
     movieCardElement.appendChild(createMoviePoster(movie.poster_path))
+    movieCardElement.appendChild(createMovieTitle(movie.title))
 
-    const movieContainerElement = createContentTextMovieCard()
-    movieContainerElement.appendChild(createMovieTitle(movie.title))
-
-    movieCardElement.appendChild(movieContainerElement)
+    movieCardElement.appendChild(createMovieOverview(movie.overview))
 
     return movieCardElement
 }

@@ -1,0 +1,31 @@
+.header-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 0.5rem;
+    margin-block-end: 3.75rem;
+    background-color: #242424;
+    color: white;
+    border-radius: 10px;
+}
+
+.logo-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 40px;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    & a {
+        display: inline-flex;
+        gap: 0.0625rem;
+        color: greenyellow;
+        font-weight: 500;
+        text-decoration: none;
+    }
+}
