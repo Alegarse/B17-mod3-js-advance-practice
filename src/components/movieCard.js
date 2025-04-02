@@ -58,7 +58,7 @@ export function createMovieOverview(overview, details) {
  * @param {*} movie
  * @returns Element card for movie
  */
-export function addMovieCardElement(movie) {
+export function addMovieCardElement(movie, details = false) {
     const movieCardElement = document.createElement('col')
 
     movieCardElement.classList = 'movie-card'
@@ -66,7 +66,7 @@ export function addMovieCardElement(movie) {
     movieCardElement.appendChild(createMoviePoster(movie.poster_path))
     movieCardElement.appendChild(createMovieTitle(movie.title))
 
-    movieCardElement.appendChild(createMovieOverview(movie.overview,true))
+    movieCardElement.appendChild(createMovieOverview(movie.overview, details))
 
     return movieCardElement
 }
