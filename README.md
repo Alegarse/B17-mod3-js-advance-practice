@@ -17,7 +17,8 @@ Click:
 
 Change:   
 - Selector de tipo de listado   
-
+   
+---
 ## Diagrama de funcionamiento 
 <p align="center">
   <img src="./public/Diagrama funcionamiento.png" alt="Visualización diagrama de funcionamiento" width="775">
