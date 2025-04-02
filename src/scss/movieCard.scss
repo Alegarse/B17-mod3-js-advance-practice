@@ -1,0 +1,34 @@
+.row {
+  display: flex;
+  gap: 15px;
+  //--bs-gutter-x: 0
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  gap: 10px;
+}
+
+.movie-poster {
+  border-radius: 5px 5px 0px 0px;
+}
+
+.movie-title {
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-overview {
+  display: -webkit-box;
+  text-align: start;
+  padding: 5px;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
