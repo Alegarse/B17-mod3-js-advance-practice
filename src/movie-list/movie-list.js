@@ -1,4 +1,3 @@
-import { movieListType } from '../api/apiConfig.js'
 import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from '../components/movieCardElements.js'
 import { containerDomElement } from '../dom/dom.js'
 

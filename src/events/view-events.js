@@ -15,3 +15,18 @@ export function createViewChangeListener(viewSelected, viewType) {
         addMovieListContainer(selectedOptions.movieDataArray,viewType)
     })
 }
+
+export function createBacktoMainButtonListener() {
+
+}
+
+export function createViewDetailsListener(movieSelected) {
+
+    const selectedMovie = document.querySelector(movieSelected)
+
+    selectedMovie.addEventListener('click', (event) => {
+        console.log(event)
+    })
+    
+
+}

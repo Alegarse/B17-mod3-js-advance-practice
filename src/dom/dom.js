@@ -25,12 +25,16 @@ function createSelectElement() {
     return selectElement
 }
 
-export function createMovieToolbar() {
+export function createMovieUtilsToolbar() {
 
     const toolbarElementDOM = document.querySelector('#toolbar')
 
     const barSelectorElements = document.createElement('div')
     barSelectorElements.classList = 'bar-selectors movie-toolbar-wrapper container'
+
+    const backtoHome = document.createElement('button')
+    backtoHome.classList = 'back-main'
+    backtoHome.setAttribute('hidden', true)
 
     const typesViewsContainer = document.createElement('div')
     typesViewsContainer.classList = 'view-selectors'
@@ -39,15 +43,18 @@ export function createMovieToolbar() {
     gridViewSelector.classList = 'grid-view'
 
     const listViewSelector = document.createElement('button')
-    listViewSelector.classList = 'list-view'
-
-    
+    listViewSelector.classList = 'list-view'    
 
     typesViewsContainer.appendChild(gridViewSelector)
     typesViewsContainer.appendChild(listViewSelector)
 
+    barSelectorElements.appendChild(backtoHome)
     barSelectorElements.appendChild(typesViewsContainer)
     barSelectorElements.appendChild(createSelectElement())
 
     toolbarElementDOM.appendChild(barSelectorElements)
+}
+
+export function createPaginatorToolbar() {
+
 }

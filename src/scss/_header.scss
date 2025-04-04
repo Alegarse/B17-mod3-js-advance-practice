@@ -27,13 +27,17 @@ display: flex;
 gap: 1rem;
 }
 
-.grid-view, .list-view {
+.grid-view, .list-view, .back-main {
   background-color: transparent;
   background-size: cover;
   background-position: center;
   border: none;
   width: 30px;
   aspect-ratio: 1;
+}
+
+.back-main {
+  background-image: url('../../public/left-arrow.svg');
 }
 
 .grid-view {
