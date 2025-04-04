@@ -1,14 +1,21 @@
 import { apiConfig } from "../api/apiConfig";
 
+const typeList = {
+    Grid: 'movie-grid',
+    List: 'movie-list',
+    Details: 'movie-details',
+}
+
 /**
  * 
  * @param {*} imageUrl 
  * @returns Element img movie
  */
-function createMoviePoster(imageUrl) {
+export function createMoviePoster(imageUrl, movieId) {
     const movieImgElement = document.createElement('img')
     const initPosterPath = `${apiConfig.posterBaseUrl}${imageUrl}`
     movieImgElement.setAttribute('src', initPosterPath);
+    movieImgElement.setAttribute('data-movie-id', movieId)
     movieImgElement.classList = 'movie-poster'
     return movieImgElement
 }
@@ -18,17 +25,17 @@ function createMoviePoster(imageUrl) {
  * @param {*} title 
  * @returns Element h3 with title
  */
-function createMovieTitle(title) {
+export function createMovieTitle(title) {
     const movieTitleElement = document.createElement('h4')
     movieTitleElement.textContent = title
     movieTitleElement.classList = 'movie-title'
     return movieTitleElement
 }
 
-function createMovieInfo(info) {
+export function createMovieData(rating, date) {
     const movieInfoElement = document.createElement('p')
-    movieInfoElement.classList = 'movie-info'
-    movieInfoElement.textContent = `Valoración: ${(info.rating).toFixed(1)} | Año: ${info.date}`
+    movieInfoElement.classList = 'movie-data'
+    movieInfoElement.textContent = `Valoración: ${(rating).toFixed(1)} | Año: ${new Date(date).getFullYear()}`
     return movieInfoElement
 }
 
@@ -37,8 +44,7 @@ function createMovieInfo(info) {
  * @param {*} description 
  * @returns Element p with description 
  */
-export function createMovieOverview(overview, details) {
-    const movieOverviewContainer = document.createElement('div')
+export function createMovieOverview(overview, details = false) {
 
     const movieOverviewElement = document.createElement('p')
     if (details) {
@@ -46,27 +52,8 @@ export function createMovieOverview(overview, details) {
         movieTitleOverviewElement.textContent = 'Sinopsis:'
         movieOverviewContainer.appendChild(movieTitleOverviewElement)
     }
-    movieOverviewElement.textContent = overview
+    movieOverviewElement.textContent = overview !== '' ? overview : 'No hay información disponible'
     movieOverviewElement.classList = 'movie-overview'
-    movieOverviewContainer.appendChild(movieOverviewElement)
 
-    return movieOverviewContainer
-}
-
-/**
- * 
- * @param {*} movie
- * @returns Element card for movie
- */
-export function addMovieCardElement(movie, details = false) {
-    const movieCardElement = document.createElement('col')
-
-    movieCardElement.classList = 'movie-card'
-
-    movieCardElement.appendChild(createMoviePoster(movie.poster_path))
-    movieCardElement.appendChild(createMovieTitle(movie.title))
-
-    movieCardElement.appendChild(createMovieOverview(movie.overview, details))
-
-    return movieCardElement
+    return movieOverviewElement
 }

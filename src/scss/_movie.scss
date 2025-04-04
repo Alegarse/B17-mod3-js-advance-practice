@@ -38,6 +38,7 @@
     margin: 6px 0 30px;
     line-height: 1.5;
     display: -webkit-box;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -54,6 +55,7 @@
   }
 
   .movie-overview {
+    line-clamp: 4;
     -webkit-line-clamp: 4;
   }
 }
@@ -67,6 +69,7 @@
 
   .movie-overview {
     @extend .mb-0;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
   }
 }

@@ -1,30 +1,19 @@
 import './scss/style.scss'
-import { movieType, getMovieListData } from './api/api.js'
-import { addMovieCardElement } from './components/components.js'
+import { getMovieListData } from './api/api'
+import { addMovieListContainer } from './movie-list/movie-list'
+import { defaultInit } from './api/apiConfig'
+import { createSelectorElementsBar } from './dom/dom'
 
-// 0. Entry point
-const containerElement = document.querySelector('#app')
+// 0. Auxuliar bar in header
+createSelectorElementsBar()
 
-//1. Import movie list grid
-async function addMovieListGrid() {
+async function start() {
 
-  // API Petition with movies data
-  const {results: movieDataArray} = await getMovieListData(movieType.popular)
-
-  // Element ROW to show movies
-  const rowElement = document.createElement('div')
-  rowElement.classList = 'row'
-
-  //For each movie need to create a movie card element
-  movieDataArray.forEach(movieData => {
-    const movieCardElement = addMovieCardElement(movieData)
-    movieCardElement.classList += ' col-lg-3 col-md-4 col-sm-6'
-    // Insert movieCardelement into ROW element
-    rowElement.appendChild(movieCardElement)
-  })
-
-  // Insert ROW into DOM
-  containerElement.appendChild(rowElement)
+    // API Petition with initial movies data
+    const {results: movieDataArray} = await getMovieListData(defaultInit.movieListType)
+    // Show initial list view movies
+    addMovieListContainer(movieDataArray,defaultInit.listView)
+    
 }
 
-addMovieListGrid().then()
+start()
