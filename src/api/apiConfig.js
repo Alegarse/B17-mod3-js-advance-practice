@@ -5,9 +5,23 @@ export const movieListType = {
     En_cartelera: 'now_playing',
 }
 
+export const movieViewTypes = {
+    Grid: 'movie-grid',
+    List: 'movie-list',
+    Details: 'movie-details',
+}
+
 export const defaultInit = {
-    movieListType: 'top_rated',
+    movieListType: 'popular',
     listView: 'movie-grid',
+    actualPage: 1,
+}
+
+export let selectedOptions = {
+    viewType: defaultInit.listView,
+    actualPage: defaultInit.actualPage,
+    movieListing: defaultInit.movieListType,
+    movieDataArray: undefined,
 }
 
 export const apiConfig = {

@@ -4,13 +4,15 @@ import { containerDomElement } from '../dom/dom.js'
 
 
 export function createMovieViewElement(movie,viewType) {
-  console.log(movie)
   const movieElement = document.createElement('div')
   movieElement.classList = viewType
   movieElement.appendChild(createMoviePoster(movie.poster_path, movie.id))
-  movieElement.appendChild(createMovieTitle(movie.title))
-  movieElement.appendChild(createMovieData(movie.vote_average, movie.release_date))
-  movieElement.appendChild(createMovieOverview(movie.overview))
+  const containerInfoElement = document.createElement('div')
+  containerInfoElement.classList = 'movie-info'
+  containerInfoElement.appendChild(createMovieTitle(movie.title))
+  containerInfoElement.appendChild(createMovieData(movie.vote_average, movie.release_date))
+  containerInfoElement.appendChild(createMovieOverview(movie.overview))
+  movieElement.appendChild(containerInfoElement)
   return movieElement
 }
 

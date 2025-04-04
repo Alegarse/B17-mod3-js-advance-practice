@@ -25,7 +25,7 @@ function createSelectElement() {
     return selectElement
 }
 
-export function createSelectorElementsBar() {
+export function createMovieToolbar() {
 
     const toolbarElementDOM = document.querySelector('#toolbar')
 
@@ -40,6 +40,8 @@ export function createSelectorElementsBar() {
 
     const listViewSelector = document.createElement('button')
     listViewSelector.classList = 'list-view'
+
+    
 
     typesViewsContainer.appendChild(gridViewSelector)
     typesViewsContainer.appendChild(listViewSelector)
