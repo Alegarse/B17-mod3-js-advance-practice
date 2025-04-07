@@ -17,7 +17,7 @@ export const defaultInit = {
     actualPage: 1,
 }
 
-export let selectedOptions = {
+export let applicationStatus = {
     viewType: defaultInit.listView,
     actualPage: defaultInit.actualPage,
     movieListing: defaultInit.movieListType,

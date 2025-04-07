@@ -34,6 +34,10 @@
     text-overflow: ellipsis;
   }
 
+  .movie-data {
+    font-weight: 600;
+  }
+
   .movie-overview {
     margin: 6px 0 30px;
     line-height: 1.5;
@@ -46,9 +50,9 @@
 }
 
 .movie-grid {
-  @extend .col-lg-3;
-  @extend .col-md-4;
-  @extend .col-sm-6;
+  //@extend .col-lg-3;
+  //@extend .col-md-4;
+  //@extend .col-sm-6;
 
   .movie-poster {
     height: 400px;

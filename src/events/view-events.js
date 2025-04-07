@@ -1,6 +1,8 @@
-import { containerDomElement } from "../dom/dom";
+import { containerDomElement } from "../util/dom";
 import { addMovieListContainer } from "../movie-list/movie-list";
-import { selectedOptions } from "../api/apiConfig";
+import { applicationStatus } from "../api/apiConfig";
+import { getMovieDetailsData } from "../api/api";
+import { createDetailsMovieContainer } from "../movie-details/movie-details";
 
 export function createViewChangeListener(viewSelected, viewType) {
 
@@ -11,22 +13,48 @@ export function createViewChangeListener(viewSelected, viewType) {
         if (attachedElement.isConnected) {
             containerDomElement.removeChild(attachedElement);
         }
-        selectedOptions.viewType = viewType
-        addMovieListContainer(selectedOptions.movieDataArray,viewType)
+        applicationStatus.viewType = viewType
+        addMovieListContainer(applicationStatus.movieDataArray, viewType)
+    })
+}
+
+export function createViewDetailsListener() {
+
+    const clickContainer = document.querySelector('#movie-list-container')
+
+    clickContainer.addEventListener('click', async (event) => {
+        const target = event.target
+        if (target.hasAttribute('data-movie-id')) {
+            const movieId = target.getAttribute('data-movie-id')
+            createDetailsMovieContainer(movieId)
+        }
     })
 }
 
 export function createBacktoMainButtonListener() {
 
-}
+    const backButton = document.querySelector('.back-main')
 
-export function createViewDetailsListener(movieSelected) {
+    backButton.addEventListener('click', () => {
+        /*
+        const attachedElement = document.querySelector('#movie-list-container')
+        if (attachedElement.isConnected) {
+            containerDomElement.removeChild(attachedElement);
+        }
+        */
+        // Hide inneccesary element in movie toolbar
+        const viewTypesButtons = document.querySelector('.view-selectors')
+        viewTypesButtons.removeAttribute('hidden')
 
-    const selectedMovie = document.querySelector(movieSelected)
+        const selectListTypeMovies = document.querySelector('.movies-categories')
+        selectListTypeMovies.removeAttribute('hidden')
 
-    selectedMovie.addEventListener('click', (event) => {
-        console.log(event)
+        // Show button for back to main
+        const backToMainButton = document.querySelector('.back-main')
+        backToMainButton.setAttribute('hidden',true)
+        addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType)
     })
-    
+
+
 
 }

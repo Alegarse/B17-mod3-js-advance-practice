@@ -1,11 +1,5 @@
 import { apiConfig } from "../api/apiConfig";
 
-const typeList = {
-    Grid: 'movie-grid',
-    List: 'movie-list',
-    Details: 'movie-details',
-}
-
 /**
  * 
  * @param {*} imageUrl 

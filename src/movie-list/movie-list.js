@@ -1,10 +1,11 @@
 import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from '../components/movieCardElements.js'
-import { containerDomElement } from '../dom/dom.js'
+import { containerDomElement } from '../util/dom.js'
 
 
 export function createMovieViewElement(movie,viewType) {
   const movieElement = document.createElement('div')
   movieElement.classList = viewType
+  movieElement.classList += viewType === 'movie-grid' ? ' col-lg-3 col-md-4 col-sm-6' : ''
   movieElement.appendChild(createMoviePoster(movie.poster_path, movie.id))
   const containerInfoElement = document.createElement('div')
   containerInfoElement.classList = 'movie-info'

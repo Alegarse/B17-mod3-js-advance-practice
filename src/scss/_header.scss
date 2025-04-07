@@ -1,5 +1,5 @@
 body {
-  margin-top: 144px;
+  margin-top: 72px;
 }
 
 .navbar {
@@ -10,12 +10,16 @@ body {
   }
 }
 
-// Auxiliary Bar
-#toolbar {
-  margin-top: 72px;
-  background-color: #eee;
+// Movie List Toolbar
+
+.movie-toolbar-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 72px;
+  z-index: 1;
 }
-.bar-selectors {
+
+.toolbar{
   display: flex;
   position: -webkit-sticky;
   position: sticky;

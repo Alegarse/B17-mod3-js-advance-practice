@@ -1,8 +1,5 @@
 import { movieListType } from "../api/apiConfig"
 
-// 0. Entry point
-export const containerDomElement = document.querySelector('#app')
-
 /**
  * 
  * @param {*} categories 
@@ -27,17 +24,20 @@ function createSelectElement() {
 
 export function createMovieUtilsToolbar() {
 
-    const toolbarElementDOM = document.querySelector('#toolbar')
+    const toolbarElementDOM = document.querySelector('#app')
 
-    const barSelectorElements = document.createElement('div')
-    barSelectorElements.classList = 'bar-selectors movie-toolbar-wrapper container'
+    const wrapperUtilsToolbar = document.createElement('div')
+    wrapperUtilsToolbar.classList = 'movie-toolbar-wrapper'
 
-    const backtoHome = document.createElement('button')
-    backtoHome.classList = 'back-main'
-    backtoHome.setAttribute('hidden', true)
+    const toolbarElements = document.createElement('div')
+    toolbarElements.classList = 'container toolbar'
 
     const typesViewsContainer = document.createElement('div')
     typesViewsContainer.classList = 'view-selectors'
+
+    const backtoHomeSelector = document.createElement('button')
+    backtoHomeSelector.classList = 'back-main'
+    backtoHomeSelector.setAttribute('hidden', true)
 
     const gridViewSelector = document.createElement('button')
     gridViewSelector.classList = 'grid-view'
@@ -45,16 +45,14 @@ export function createMovieUtilsToolbar() {
     const listViewSelector = document.createElement('button')
     listViewSelector.classList = 'list-view'    
 
+    typesViewsContainer.appendChild(backtoHomeSelector)
     typesViewsContainer.appendChild(gridViewSelector)
     typesViewsContainer.appendChild(listViewSelector)
 
-    barSelectorElements.appendChild(backtoHome)
-    barSelectorElements.appendChild(typesViewsContainer)
-    barSelectorElements.appendChild(createSelectElement())
+    toolbarElements.appendChild(typesViewsContainer)
+    toolbarElements.appendChild(createSelectElement())
 
-    toolbarElementDOM.appendChild(barSelectorElements)
-}
+    wrapperUtilsToolbar.appendChild(toolbarElements)
 
-export function createPaginatorToolbar() {
-
+    toolbarElementDOM.appendChild(wrapperUtilsToolbar)
 }
