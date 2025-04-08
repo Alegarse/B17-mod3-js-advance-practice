@@ -36,8 +36,6 @@ function createDetailsMovieContainer(movieData) {
 
 export async function addMovieDetailsContainer(movieId) {
 
-    
-
     const movieData = await getMovieDetailsData(movieId)
 
     createDetailsMovieContainer(movieData)
