@@ -1,9 +1,5 @@
 import { applicationStatus } from "../api/apiConfig";
 
-function setVisibility(domElement, visible = true) {
-  visible ? domElement.removeAttribute('hidden') : domElement.setAttribute('hidden', true)
-}
-
 // 0. Entry point
 export const containerDomElement = document.querySelector('#app')
 
@@ -51,4 +47,8 @@ export function setDefaultSelectedListMovie(elementDom) {
 
   if(selectElement) selectElement.value = applicationStatus.movieListing;
 
+}
+
+function setVisibility(domElement, visible = true) {
+  visible ? domElement.removeAttribute('hidden') : domElement.setAttribute('hidden', true)
 }

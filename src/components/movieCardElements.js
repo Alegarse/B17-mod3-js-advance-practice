@@ -38,11 +38,12 @@ export function createMovieData(rating, date) {
  * @param {*} description 
  * @returns Element p with description 
  */
-export function createMovieOverview(overview, details = false) {
+export function createMovieOverview(overview, details) {
 
     const movieOverviewElement = document.createElement('p')
     if (details) {
         const movieTitleOverviewElement = document.createElement('h5')
+        movieTitleOverviewElement.classList = 'details-title'
         movieTitleOverviewElement.textContent = 'Sinopsis:'
         movieOverviewContainer.appendChild(movieTitleOverviewElement)
     }

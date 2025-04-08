@@ -1,19 +1,20 @@
 import { containerDomElement, createMovieListContainer } from "../util/dom";
+import { getMovieDetailsData } from "../api/api";
 
-export function createDetailsMovieContainer(movieId) {
+function createDetailsMovieContainer() {
+
+
 
     // Element container for list movies
     const moviesContainerElement = createMovieListContainer()
 
-    const detailsMovieContainer = document.createElement('div')
-    detailsMovieContainer.classList = 'movie-details'
-    detailsMovieContainer.textContent = `Id Película: ${movieId}`
-
-    moviesContainerElement.appendChild(detailsMovieContainer)
-
     containerDomElement.appendChild(moviesContainerElement)
 }
 
-function addMovieDetailsContainer() {
+export async function addMovieDetailsContainer(movieId) {
+
+    createDetailsMovieContainer()
+
+    const movieData = await getMovieDetailsData(movieId)
 
 }

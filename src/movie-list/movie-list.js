@@ -1,19 +1,23 @@
 import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from '../components/movieCardElements.js'
 import { containerDomElement, createMovieListContainer } from '../util/dom.js'
-import { addEventListeners } from '../events/events.js'
 
+export function createMovieViewElement(movie, viewType, details = false) {
 
-export function createMovieViewElement(movie, viewType) {
   const movieElement = document.createElement('div')
+
   movieElement.classList += `movie-card ${viewType}`
   movieElement.classList += viewType === 'movie-grid' ? ' col-lg-3 col-md-4 col-sm-6' : ''
   movieElement.appendChild(createMoviePoster(movie.poster_path, movie.id))
+
   const containerInfoElement = document.createElement('div')
   containerInfoElement.classList = 'movie-info'
+
   containerInfoElement.appendChild(createMovieTitle(movie.title))
   containerInfoElement.appendChild(createMovieData(movie.vote_average, movie.release_date))
-  containerInfoElement.appendChild(createMovieOverview(movie.overview))
+  containerInfoElement.appendChild(createMovieOverview(movie.overview, details))
+
   movieElement.appendChild(containerInfoElement)
+
   return movieElement
 }
 
@@ -47,7 +51,4 @@ export async function addMovieListContainer(movieDataArray, listView) {
 
   // Insert container into DOM
   containerDomElement.appendChild(moviesContainerElement)
-
-  // Restart listeners
-  addEventListeners()
 }

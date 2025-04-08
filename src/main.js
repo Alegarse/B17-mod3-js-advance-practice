@@ -24,7 +24,7 @@ async function launch() {
     // Set default List movie data viewed
     setDefaultSelectedListMovie('.movies-categories')
 
-    // Create event listeners for elements in movie toolbar
+    // Create event listeners for elements
     addEventListeners()
 
 }
