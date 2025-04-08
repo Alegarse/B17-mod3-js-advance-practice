@@ -40,15 +40,21 @@ export function createMovieData(rating, date) {
  */
 export function createMovieOverview(overview, details) {
 
-    const movieOverviewElement = document.createElement('p')
+    const movieOverviewContainer = document.createElement('div')
+    movieOverviewContainer.classList = 'movie-overview-container'
+
     if (details) {
+        
         const movieTitleOverviewElement = document.createElement('h5')
         movieTitleOverviewElement.classList = 'details-title'
         movieTitleOverviewElement.textContent = 'Sinopsis:'
         movieOverviewContainer.appendChild(movieTitleOverviewElement)
     }
-    movieOverviewElement.textContent = overview !== '' ? overview : 'No hay información disponible'
-    movieOverviewElement.classList = 'movie-overview'
+    const movieOverviewPElement = document.createElement('p')
+    movieOverviewPElement.textContent = overview !== '' ? overview : 'No hay información disponible'
+    movieOverviewPElement.classList = 'movie-overview'
 
-    return movieOverviewElement
+    movieOverviewContainer.appendChild(movieOverviewPElement)
+
+    return movieOverviewContainer
 }
