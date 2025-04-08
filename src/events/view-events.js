@@ -1,24 +1,44 @@
-import { containerDomElement } from "../util/dom";
-import { addMovieListContainer } from "../movie-list/movie-list";
+import { removeDomElement, setVisibility } from "../util/dom";
+import { addMovieListContainer, changeViewMovieElement } from "../movie-list/movie-list";
 import { applicationStatus } from "../api/apiConfig";
-import { getMovieDetailsData } from "../api/api";
 import { createDetailsMovieContainer } from "../movie-details/movie-details";
 
-export function createViewChangeListener(viewSelected, viewType) {
+export function createViewChangeListener(elementSelected, viewType) {
 
-    const selectedViewButton = document.querySelector(viewSelected)
+    const selectedViewButton = document.querySelector(elementSelected)
 
     selectedViewButton.addEventListener('click', () => {
-        const attachedElement = document.querySelector('#movie-list-container')
-        if (attachedElement.isConnected) {
-            containerDomElement.removeChild(attachedElement);
-        }
+        changeViewMovieElement(viewType)
         applicationStatus.viewType = viewType
-        addMovieListContainer(applicationStatus.movieDataArray, viewType)
     })
 }
 
-export function createViewDetailsListener() {
+export function buttonBackHomeListener(elementSelected) {
+
+    const backMainButton = document.querySelector(elementSelected)
+
+    backMainButton.addEventListener('click', () => {
+        const attachedElement = document.querySelector('#movie-list-container')
+        removeDomElement(attachedElement)
+        addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType)
+        // Hide/show inneccesary element in movie toolbar
+        const viewGridButton = document.querySelector('.grid-view')
+        setVisibility(viewGridButton)
+
+        const viewListButton = document.querySelector('.list-view')
+        setVisibility(viewListButton)
+
+        const selectListTypeMovies = document.querySelector('.movies-categories')
+        setVisibility(selectListTypeMovies)
+
+        // Show button for back to main
+        const backToMainButton = document.querySelector('.back-main')
+        setVisibility(backToMainButton, false)
+    })
+
+}
+
+export function createMoviePosterListener() {
 
     const clickContainer = document.querySelector('#movie-list-container')
 
@@ -26,35 +46,9 @@ export function createViewDetailsListener() {
         const target = event.target
         if (target.hasAttribute('data-movie-id')) {
             const movieId = target.getAttribute('data-movie-id')
+            const attachedElement = document.querySelector('#movie-list-container')
+            removeDomElement(attachedElement)
             createDetailsMovieContainer(movieId)
         }
     })
-}
-
-export function createBacktoMainButtonListener() {
-
-    const backButton = document.querySelector('.back-main')
-
-    backButton.addEventListener('click', () => {
-        /*
-        const attachedElement = document.querySelector('#movie-list-container')
-        if (attachedElement.isConnected) {
-            containerDomElement.removeChild(attachedElement);
-        }
-        */
-        // Hide inneccesary element in movie toolbar
-        const viewTypesButtons = document.querySelector('.view-selectors')
-        viewTypesButtons.removeAttribute('hidden')
-
-        const selectListTypeMovies = document.querySelector('.movies-categories')
-        selectListTypeMovies.removeAttribute('hidden')
-
-        // Show button for back to main
-        const backToMainButton = document.querySelector('.back-main')
-        backToMainButton.setAttribute('hidden',true)
-        addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType)
-    })
-
-
-
 }

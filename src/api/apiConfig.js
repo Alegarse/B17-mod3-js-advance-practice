@@ -12,7 +12,7 @@ export const movieViewTypes = {
 }
 
 export const defaultInit = {
-    movieListType: 'popular',
+    movieListType: 'upcoming',
     listView: 'movie-grid',
     actualPage: 1,
 }

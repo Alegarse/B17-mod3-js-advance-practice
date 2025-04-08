@@ -1,6 +1,9 @@
-import { containerDomElement } from "../util/dom";
+import { containerDomElement, setVisibility, createMovieListContainer } from "../util/dom";
 
 export function createDetailsMovieContainer(movieId) {
+
+    // Element container for list movies
+    const moviesContainerElement = createMovieListContainer()
 
     const detailsMovieContainer = document.createElement('div')
     detailsMovieContainer.classList = 'movie-details'
@@ -8,22 +11,19 @@ export function createDetailsMovieContainer(movieId) {
 
     // Hide inneccesary element in movie toolbar
     const viewGridButton = document.querySelector('.grid-view')
-    viewGridButton.setAttribute('hidden', true)
+    setVisibility(viewGridButton, false)
 
     const viewListButton = document.querySelector('.list-view')
-    viewListButton.setAttribute('hidden', true)
+    setVisibility(viewListButton, false)
 
     const selectListTypeMovies = document.querySelector('.movies-categories')
-    selectListTypeMovies.setAttribute('hidden', true)
+    setVisibility(selectListTypeMovies, false)
 
     // Show button for back to main
     const backToMainButton = document.querySelector('.back-main')
-    backToMainButton.removeAttribute('hidden')
+    setVisibility(backToMainButton)
 
-    const attachedElement = document.querySelector('#movie-list-container')
-    if (attachedElement.isConnected) {
-        containerDomElement.removeChild(attachedElement);
-    }
+    moviesContainerElement.appendChild(detailsMovieContainer)
 
-    containerDomElement.appendChild(detailsMovieContainer)
+    containerDomElement.appendChild(moviesContainerElement)
 }

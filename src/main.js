@@ -1,12 +1,13 @@
 import './scss/style.scss'
-import { getMovieListData } from './api/api'
-import { addMovieListContainer } from './movie-list/movie-list'
-import { movieViewTypes, defaultInit, applicationStatus } from './api/apiConfig'
+import { setDefaultSelectedListMovie } from './util/dom'
 import { createMovieUtilsToolbar } from './list-toolbar/list-toolbar'
-import { createViewChangeListener, createViewDetailsListener, createBacktoMainButtonListener } from './events/view-events'
-import { createMovieListChangeListener } from './events/movie-type-event'
+import { getMovieListData } from './api/api'
+import { defaultInit, applicationStatus } from './api/apiConfig'
+import { addMovieListContainer } from './movie-list/movie-list'
+import { addEventListeners } from './events/events'
 
-async function start() {
+
+async function launch() {
 
     // Create movie toolbar utils in header
     createMovieUtilsToolbar()
@@ -20,18 +21,12 @@ async function start() {
     // Show initial list view movies with default config
     addMovieListContainer(applicationStatus.movieDataArray,defaultInit.listView)
 
-    // Create pagination toolbar
-    //createPaginatorToolbar()
+    // Set default List movie data viewed
+    setDefaultSelectedListMovie('.movies-categories')
 
     // Create event listeners for elements in movie toolbar
-    createViewChangeListener('.grid-view', movieViewTypes.Grid)
-    createViewChangeListener('.list-view', movieViewTypes.List)
-    createViewChangeListener('.back-main', movieViewTypes.List)
-    createMovieListChangeListener('.movies-categories')
-    createBacktoMainButtonListener()
+    addEventListeners()
 
-    // Create event listener to view movie details
-    createViewDetailsListener()
 }
 
-start()
+launch()
