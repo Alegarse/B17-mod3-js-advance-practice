@@ -1,13 +1,29 @@
 import { containerDomElement, createMovieListContainer } from "../util/dom";
 import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from "../components/movieCardElements";
 import { getMovieDetailsData } from "../api/api";
-import { movieViewTypes } from "../api/apiConfig";
+import { movieViewTypes,apiConfig } from "../api/apiConfig";
+
+export async function addMovieDetailsContainer(movieId) {
+
+  const movieData = await getMovieDetailsData(movieId)
+
+  createDetailsMovieContainer(movieData)
+
+}
 
 function createMovieViewElement(movie, viewType, details = false) {
 
+  const movieElementContainer = document.createElement('div')
+
+  movieElementContainer.classList = 'movie-details-container'
+  movieElementContainer.setAttribute('style',`background-image: url(${apiConfig.backdropBaseUrl}${movie.backdrop_path})`)
+
+  const movieElementOverlay = document.createElement('div')
+  movieElementOverlay.classList = 'movie-backdrop-overlay'
+
   const movieElement = document.createElement('div')
 
-  movieElement.classList += `movie-card-details ${viewType}`
+  movieElement.classList = viewType
   movieElement.appendChild(createMoviePoster(movie.poster_path, movie.id))
 
   const containerInfoElement = document.createElement('div')
@@ -19,7 +35,10 @@ function createMovieViewElement(movie, viewType, details = false) {
 
   movieElement.appendChild(containerInfoElement)
 
-  return movieElement
+  movieElementContainer.appendChild(movieElementOverlay)
+  movieElementContainer.appendChild(movieElement)
+
+  return movieElementContainer
 }
 
 function createDetailsMovieContainer(movieData) {
@@ -27,17 +46,9 @@ function createDetailsMovieContainer(movieData) {
     // Element container for show movie details
     const moviesContainerElement = createMovieListContainer()
 
-    const movieDetailsElement = createMovieViewElement(movieData, movieViewTypes.List, true)
+    const movieDetailsElement = createMovieViewElement(movieData, movieViewTypes.Details, true)
 
     moviesContainerElement.appendChild(movieDetailsElement)
 
     containerDomElement.appendChild(moviesContainerElement)
-}
-
-export async function addMovieDetailsContainer(movieId) {
-
-    const movieData = await getMovieDetailsData(movieId)
-
-    createDetailsMovieContainer(movieData)
-
 }

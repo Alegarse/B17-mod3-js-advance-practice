@@ -45,8 +45,8 @@ export function createMovieOverview(overview, details) {
 
     if (details) {
         
-        const movieTitleOverviewElement = document.createElement('h5')
-        movieTitleOverviewElement.classList = 'details-title'
+        const movieTitleOverviewElement = document.createElement('p')
+        movieTitleOverviewElement.classList = 'movie-overview-title'
         movieTitleOverviewElement.textContent = 'Sinopsis:'
         movieOverviewContainer.appendChild(movieTitleOverviewElement)
     }

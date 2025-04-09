@@ -50,10 +50,6 @@
 }
 
 .movie-grid {
-  //@extend .col-lg-3;
-  //@extend .col-md-4;
-  //@extend .col-sm-6;
-
   .movie-poster {
     height: 400px;
   }
@@ -67,7 +63,7 @@
 .movie-list {
   @extend .my-2;
   display: grid;
-  grid-template-columns: 1fr 11fr ;
+  grid-template-columns: 1fr 11fr;
   height: 150px;
 
   .movie-poster {
@@ -80,7 +76,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-inline-start: 10px
+    padding-inline-start: 10px;
   }
 
   .movie-title {
@@ -94,21 +90,37 @@
   }
 }
 
-.movie-details {
-  color: white;
-  background-color: black;
+.movie-details-container {
+  position: relative;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
+  color: white;
+}
+
+.movie-backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  filter: none;
+}
+
+.movie-details {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  color: white;
+  padding: 40px;
+  z-index: 1;
 
   .movie-poster:hover {
     opacity: 100%;
     cursor: default;
   }
 
-  .movie-backdrop-overlay {
-    @extend .py-5;
-    background-color: rgba(0, 0, 0, 0.7);
-    filter: none;
+  .movie-info {
+    padding-inline: 1.25rem;
   }
 
   .movie-title {
@@ -116,7 +128,7 @@
   }
 
   .movie-overview {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 
     &-title {
       font-size: 1.5rem;
@@ -125,7 +137,7 @@
   }
 
   .movie-data {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
   }
 }
