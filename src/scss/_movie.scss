@@ -1,3 +1,7 @@
+body {
+  background-color: black
+}
+
 .movie-toolbar-wrapper {
   @extend .py-2;
   background-color: #eee;
@@ -6,11 +10,14 @@
 
 #movie-list-container {
   @extend .mt-5;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-top: 10px;  
 }
 
 .movie-grid,
 .movie-list,
 .movie-details {
+  color: white;
   .movie-poster {
     width: 100%;
     overflow: hidden;
@@ -92,7 +99,9 @@
 
 #movie-details-container {
   position: relative;
-  background-color: black;
+  border-radius: $border-radius;
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
 }
 
 .movie-details-container {
@@ -150,8 +159,10 @@
   flex-direction: column;
   position: relative;
   padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
 
   .cast-container-title {
+    font-weight: 600;
     font-size: 35px;
     color: white;
   }
@@ -164,12 +175,36 @@
   }
 }
 
+.cast-container {
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+    }
+  }
+}
+
 .cast-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 130px;
   color: white;
+  gap: 5px;
 
   .cast-img {
     width: 100%;
@@ -180,9 +215,13 @@
   }
 
   .cast-name {
-    font-size: 18px;
     font-weight: 600;
     text-align: center;
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .cast-charname {

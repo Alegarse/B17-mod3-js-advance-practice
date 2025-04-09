@@ -1,4 +1,4 @@
-import { apiConfig } from "../api/apiConfig";
+import { apiConfig, jobTraductions } from "../api/apiConfig";
 
 /**
  * 
@@ -7,12 +7,9 @@ import { apiConfig } from "../api/apiConfig";
  */
 function createCastImg(photoUrl) {
     const castImgElement = document.createElement('img');
-    if (photoUrl !== null) {
-        castImgElement.setAttribute('src', `${apiConfig.photoBaseUrl}${photoUrl}`);
-    } else {
-        castImgElement.setAttribute('src', '../../public/empty_char.png');
-    }
-    
+    let srcString = `${apiConfig.photoBaseUrl}${photoUrl}`
+    if (photoUrl == null) srcString = '/empty_char.png'
+    castImgElement.setAttribute('src', srcString);
     castImgElement.classList = 'cast-img'
     return castImgElement
 }
@@ -46,13 +43,19 @@ function createCastCharName(characterName) {
  * @param {*} actor 
  * @returns Element card for actor
  */
-export function createCastCard(cast) {
+export function createCastCard(cast,type = 0) {
     const castCardElement = document.createElement('div')
     castCardElement.classList = 'cast-card'
 
     castCardElement.appendChild(createCastImg(cast.profile_path))
     castCardElement.appendChild(createCastName(cast.original_name))
-    castCardElement.appendChild(createCastCharName(cast.character))
+    let assignedRol = cast.character
+    if (type === 1){
+        const job = cast.job.replaceAll(' ','_').replaceAll('"','').toLowerCase()
+        assignedRol = jobTraductions[job]
+        if (assignedRol === undefined) assignedRol = cast.job
+    } 
+    castCardElement.appendChild(createCastCharName(assignedRol))
 
     return castCardElement
 }
