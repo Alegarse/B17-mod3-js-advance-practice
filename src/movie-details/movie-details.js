@@ -11,12 +11,12 @@ export async function addMovieDetailsContainer(movieId) {
 
 }
 
-function createMovieViewElement(movie, viewType, details = false) {
+function createMovieViewElement(movieData, viewType, details = false) {
 
   const movieElementContainer = document.createElement('div')
 
   movieElementContainer.classList = 'movie-details-container container'
-  movieElementContainer.setAttribute('style',`background-image: url(${apiConfig.backdropBaseUrl}${movie.backdrop_path})`)
+  movieElementContainer.setAttribute('style',`background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
 
   const movieElementOverlay = document.createElement('div')
   movieElementOverlay.classList = 'movie-backdrop-overlay'
@@ -24,14 +24,14 @@ function createMovieViewElement(movie, viewType, details = false) {
   const movieElement = document.createElement('div')
 
   movieElement.classList = `${viewType} container`
-  movieElement.appendChild(createMoviePoster(movie.poster_path, movie.id, true))
+  movieElement.appendChild(createMoviePoster(movieData.poster_path, movieData.id, true))
 
   const containerInfoElement = document.createElement('div')
   containerInfoElement.classList = 'movie-info'
 
-  containerInfoElement.appendChild(createMovieTitle(movie.title))
-  containerInfoElement.appendChild(createMovieData(movie.vote_average, movie.release_date))
-  containerInfoElement.appendChild(createMovieOverview(movie.overview, details))
+  containerInfoElement.appendChild(createMovieTitle(movieData.title))
+  containerInfoElement.appendChild(createMovieData(movieData.vote_average, movieData.release_date))
+  containerInfoElement.appendChild(createMovieOverview(movieData.overview, details))
 
   movieElement.appendChild(containerInfoElement)
 
@@ -39,6 +39,10 @@ function createMovieViewElement(movie, viewType, details = false) {
   movieElementContainer.appendChild(movieElement)
 
   return movieElementContainer
+}
+
+function createcreditsMovieElement(movieData) {
+
 }
 
 function createDetailsMovieContainer(movieData) {

@@ -95,6 +95,12 @@
   background-color: black;
 }
 
+.movie-details-container {
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
 .movie-backdrop-overlay {
   position: absolute;
   inset: 0;
@@ -110,14 +116,6 @@
   color: white;
   padding: 40px;
   z-index: 1;
-
-  .movie-backdrop-overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 0;
-    filter: none;
-  }
 
   .movie-poster:hover {
     opacity: 100%;
