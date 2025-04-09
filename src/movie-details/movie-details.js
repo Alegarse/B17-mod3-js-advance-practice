@@ -1,7 +1,8 @@
-import { containerDomElement, createMovieDetailsContainer } from "../util/dom";
-import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from "../components/movieCardElements";
-import { getMovieDetailsData } from "../api/api";
-import { movieViewTypes,apiConfig } from "../api/apiConfig";
+import { containerDomElement, createMovieDetailsContainer } from "../util/dom"
+import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from "../components/movieCardElements"
+import { createCastCard } from "../components/castCardElements"
+import { getMovieDetailsData } from "../api/api"
+import { movieViewTypes, apiConfig } from "../api/apiConfig"
 
 export async function addMovieDetailsContainer(movieId) {
 
@@ -16,7 +17,7 @@ function createMovieViewElement(movieData, viewType, details = false) {
   const movieElementContainer = document.createElement('div')
 
   movieElementContainer.classList = 'movie-details-container container'
-  movieElementContainer.setAttribute('style',`background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
+  movieElementContainer.setAttribute('style', `background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
 
   const movieElementOverlay = document.createElement('div')
   movieElementOverlay.classList = 'movie-backdrop-overlay'
@@ -41,18 +42,40 @@ function createMovieViewElement(movieData, viewType, details = false) {
   return movieElementContainer
 }
 
-function createcreditsMovieElement(movieData) {
+function createCastMovieElement(castsMovie) {
+
+  const castsElement = document.createElement('div')
+  castsElement.classList = 'cast-container container'
+
+  const titleCastsContainer = document.createElement('p')
+  titleCastsContainer.classList = 'cast-container-title'
+  titleCastsContainer.textContent = 'Reparto'
+
+  const castsContainer = document.createElement('div')
+  castsContainer.classList = 'casts-elements'
+
+  castsMovie.cast.forEach(cast => {
+      const castElement = createCastCard(cast)
+      castsContainer.appendChild(castElement)
+  })
+
+  castsElement.appendChild(titleCastsContainer)
+  castsElement.appendChild(castsContainer)
+
+  return castsElement
 
 }
 
 function createDetailsMovieContainer(movieData) {
 
-    // Element container for show movie details
-    const moviesContainerElement = createMovieDetailsContainer()
+  // Element container for show movie details
+  const moviesContainerElement = createMovieDetailsContainer()
 
-    const movieDetailsElement = createMovieViewElement(movieData, movieViewTypes.Details, true)
+  const movieDetailsElement = createMovieViewElement(movieData, movieViewTypes.Details, true)
+  const movieCastElements = createCastMovieElement(movieData.credits)
 
-    moviesContainerElement.appendChild(movieDetailsElement)
+  moviesContainerElement.appendChild(movieDetailsElement)
+  moviesContainerElement.appendChild(movieCastElements)
 
-    containerDomElement.appendChild(moviesContainerElement)
+  containerDomElement.appendChild(moviesContainerElement)
 }
