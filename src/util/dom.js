@@ -41,6 +41,13 @@ export function createMovieListContainer() {
   return moviesContainerElement
 }
 
+export function createMovieDetailsContainer() {
+  // Element container for list movies
+  const moviesContainerElement = document.createElement('div')
+  moviesContainerElement.id = 'movie-details-container'
+  return moviesContainerElement
+}
+
 export function setDefaultSelectedListMovie(elementDom) {
 
   const selectElement = document.querySelector(elementDom);

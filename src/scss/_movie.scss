@@ -90,18 +90,15 @@
   }
 }
 
-.movie-details-container {
+#movie-details-container {
   position: relative;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  color: white;
+  background-color: black;
 }
 
 .movie-backdrop-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 0;
   filter: none;
 }
@@ -113,6 +110,14 @@
   color: white;
   padding: 40px;
   z-index: 1;
+
+  .movie-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+    filter: none;
+  }
 
   .movie-poster:hover {
     opacity: 100%;

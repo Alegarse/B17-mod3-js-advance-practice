@@ -5,11 +5,11 @@ import { apiConfig } from "../api/apiConfig";
  * @param {*} imageUrl 
  * @returns Element img movie
  */
-export function createMoviePoster(imageUrl, movieId) {
+export function createMoviePoster(imageUrl, movieId, inDetails = false) {
     const movieImgElement = document.createElement('img')
     const initPosterPath = `${apiConfig.posterBaseUrl}${imageUrl}`
     movieImgElement.setAttribute('src', initPosterPath);
-    movieImgElement.setAttribute('data-movie-id', movieId)
+    if (!inDetails) movieImgElement.setAttribute('data-movie-id', movieId)
     movieImgElement.classList = 'movie-poster'
     return movieImgElement
 }
@@ -38,12 +38,12 @@ export function createMovieData(rating, date) {
  * @param {*} description 
  * @returns Element p with description 
  */
-export function createMovieOverview(overview, details) {
+export function createMovieOverview(overview, inDetails) {
 
     const movieOverviewContainer = document.createElement('div')
     movieOverviewContainer.classList = 'movie-overview-container'
 
-    if (details) {
+    if (inDetails) {
         
         const movieTitleOverviewElement = document.createElement('p')
         movieTitleOverviewElement.classList = 'movie-overview-title'
