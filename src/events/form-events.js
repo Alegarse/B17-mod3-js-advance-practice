@@ -13,6 +13,7 @@ export function createFormMovieListener(formId, inputId) {
         event.preventDefault();
         const movieToSearch = inputElement.value
         searchMovieBytitle(movieToSearch)
+        inputElement.value = ''
     })
 
 }
