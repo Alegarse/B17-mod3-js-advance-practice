@@ -13,7 +13,7 @@ export function createMovieViewElement(movie, viewType, details = false) {
   containerInfoElement.classList = 'movie-info'
 
   containerInfoElement.appendChild(createMovieTitle(movie.title))
-  containerInfoElement.appendChild(createMovieData(movie.vote_average, movie.release_date))
+  containerInfoElement.appendChild(createMovieData(movie.vote_average === undefined ? 0 : movie.vote_average, movie.release_date))
   containerInfoElement.appendChild(createMovieOverview(movie.overview, details))
 
   movieElement.appendChild(containerInfoElement)
@@ -45,6 +45,22 @@ export async function addMovieListContainer(movieDataArray, listView) {
     // Insert movieCardelement into ROW element
     rowElement.appendChild(movieCardElement)
   })
+
+  // Insert ROW into container
+  moviesContainerElement.appendChild(rowElement)
+
+  // Insert container into DOM
+  containerDomElement.appendChild(moviesContainerElement)
+}
+
+export function addMovieEmptyListContainer() {
+  // Element container for list movies
+  const moviesContainerElement = createMovieListContainer()
+
+  // Element ROW to show movies
+  const rowElement = document.createElement('div')
+  rowElement.classList = 'row empty'
+  rowElement.textContent = 'La búsqueda realizada no ha arrojado ningún resultado'
 
   // Insert ROW into container
   moviesContainerElement.appendChild(rowElement)

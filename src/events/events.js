@@ -1,5 +1,6 @@
 import { createViewChangeListener, createMoviePosterListener, buttonBackHomeListener } from "./view-events";
 import { createMovieListChangeListener } from "./select-events";
+import { createFormMovieListener } from "./form-events";
 import { movieViewTypes } from "../api/apiConfig";
 
 export function addEventListeners() {
@@ -14,5 +15,8 @@ export function addEventListeners() {
 
     // Movie poster
     createMoviePosterListener()
+
+    // Button for input element
+    createFormMovieListener('#search-movie-form', '#search-movie-input')
 
 }

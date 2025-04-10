@@ -42,7 +42,7 @@ function createMovieViewElement(movieData, viewType, details = false) {
   return movieElementContainer
 }
 
-function createCastMovieElement(dataCreditsMovie) {
+function createCastMovieElement(dataCastMovie) {
 
   const castsElement = document.createElement('div')
   castsElement.classList = 'cast-container container'
@@ -54,7 +54,7 @@ function createCastMovieElement(dataCreditsMovie) {
   const castsContainer = document.createElement('div')
   castsContainer.classList = 'casts-elements'
 
-  dataCreditsMovie.cast.forEach(cast => {
+  dataCastMovie.forEach(cast => {
       const castElement = createCastCard(cast)
       castsContainer.appendChild(castElement)
   })
@@ -66,7 +66,7 @@ function createCastMovieElement(dataCreditsMovie) {
 
 }
 
-function createCrewMovieElement(dataCreditsMovie) {
+function createCrewMovieElement(dataCrewMovie) {
 
   const crewsElement = document.createElement('div')
   crewsElement.classList = 'cast-container container'
@@ -78,7 +78,7 @@ function createCrewMovieElement(dataCreditsMovie) {
   const crewsContainer = document.createElement('div')
   crewsContainer.classList = 'casts-elements'
 
-  dataCreditsMovie.crew.forEach(crew => {
+  dataCrewMovie.forEach(crew => {
       const crewElement = createCastCard(crew,1)
       crewsContainer.appendChild(crewElement)
   })
@@ -90,15 +90,14 @@ function createCrewMovieElement(dataCreditsMovie) {
 
 }
 
-function createDetailsMovieContainer(movieData) {
+export function createDetailsMovieContainer(movieData) {
 
   // Element container for show movie details
   const moviesContainerElement = createMovieDetailsContainer()
 
   const movieDetailsElement = createMovieViewElement(movieData, movieViewTypes.Details, true)
-  
-  const movieCastElements = createCastMovieElement(movieData.credits)
-  const movieCrewElement = createCrewMovieElement(movieData.credits)
+  const movieCastElements = createCastMovieElement(movieData.credits.cast)
+  const movieCrewElement = createCrewMovieElement(movieData.credits.crew)
 
   moviesContainerElement.appendChild(movieDetailsElement)
   moviesContainerElement.appendChild(movieCastElements)

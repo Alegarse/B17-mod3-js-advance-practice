@@ -18,7 +18,8 @@ export function buttonBackHomeListener(elementSelected) {
     const backMainButton = document.querySelector(elementSelected)
 
     backMainButton.addEventListener('click', () => {
-        const attachedElement = document.querySelector('#movie-details-container')
+        let attachedElement = document.querySelector('#movie-details-container')
+        if (attachedElement === null) attachedElement = document.querySelector('#movie-list-container')
         removeDomElement(attachedElement)
         addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType)
         setViewElementsToolbar('main')
