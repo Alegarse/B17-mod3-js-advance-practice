@@ -28,8 +28,6 @@ export async function getMovieDetailsData(movieId) {
 }
 
 
-//https://api.themoviedb.org/3/search/movie?query=minecraf&include_adult=false&language=es-ES&page=1'
-//https://api.themoviedb.org/3/search/movie/query=minecraft?api_key=ed813799d99e41da8be2cea874ed7740&include_adult=false&language=es-ES&page=1
 export async function searchMovieId(movieTitle) {
     try {
         let movieSearchUrl = apiConfig.baseUrl
