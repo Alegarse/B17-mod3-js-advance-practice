@@ -5,6 +5,7 @@ import { getMovieListData } from './api/api'
 import { defaultInit, applicationStatus } from './api/apiConfig'
 import { addMovieListContainer } from './movie-list/movie-list'
 import { addEventListeners } from './events/events'
+import { createPaginationTool } from './movie-list/movie-pagination'
 
 
 async function launch() {
@@ -21,11 +22,15 @@ async function launch() {
     // Show initial list view movies with default config
     addMovieListContainer(applicationStatus.movieDataArray,defaultInit.listView)
 
+
     // Set default List movie data viewed
     setDefaultSelectedListMovie('.movies-categories')
 
     // Create event listeners for elements
     addEventListeners()
+
+    // Add pagination tool
+    createPaginationTool()
 
 }
 

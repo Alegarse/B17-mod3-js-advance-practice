@@ -1,0 +1,34 @@
+.pagination-tool {
+  display: flex;
+  padding: 5px;
+  margin-top: 10px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-tool button {
+    display: inline-block;
+  margin-right: 1rem;
+  width: 2rem;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+}
+
+.previous-page {
+    background-image: url('/arrow-badge-left.png');
+}
+
+.actual-page {
+    font-weight: 700;
+    font-size: 22px;
+    color: #FBA834;
+}
+
+.next-page {
+    background-image: url('/arrow-badge-right.png');
+}
