@@ -53,14 +53,14 @@ export async function addMovieListContainer(movieDataArray, listView) {
   containerDomElement.appendChild(moviesContainerElement)
 }
 
-export function addMovieEmptyListContainer() {
+export function addMovieEmptyListContainer(text) {
   // Element container for list movies
   const moviesContainerElement = createMovieListContainer()
 
   // Element ROW to show movies
   const rowElement = document.createElement('div')
   rowElement.classList = 'row empty'
-  rowElement.textContent = 'La búsqueda realizada no ha arrojado ningún resultado'
+  rowElement.textContent = text
 
   // Insert ROW into container
   moviesContainerElement.appendChild(rowElement)

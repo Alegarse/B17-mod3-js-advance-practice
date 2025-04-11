@@ -1,5 +1,5 @@
 import { searchMovieId } from "../api/api";
-import { applicationStatus } from "../api/apiConfig";
+import { applicationStatus, emptySearchText } from "../api/apiConfig";
 import { containerDomElement } from "../util/dom";
 import { addMovieListContainer } from "../movie-list/movie-list";
 import { addMovieEmptyListContainer } from "../movie-list/movie-list";
@@ -23,7 +23,7 @@ async function searchMovieBytitle(movieTitle) {
     const { results: dataMovieSearched } = await searchMovieId(movieTitle)
 
     const resultsNumber = dataMovieSearched.length
-    console.log(resultsNumber)
+
     let attachedElement = document.querySelector('#movie-list-container')
         if (attachedElement === null) attachedElement = document.querySelector('#movie-details-container')
         if (attachedElement.isConnected)  containerDomElement.removeChild(attachedElement);
@@ -31,7 +31,7 @@ async function searchMovieBytitle(movieTitle) {
     if (resultsNumber === 0) {
         // Dont clear -> applicationStatus.movieDataArray = undefined
         // Maybe at details Page and need a data to return to Main Page
-        addMovieEmptyListContainer()
+        addMovieEmptyListContainer(emptySearchText.no_records)
     } else {
         applicationStatus.movieDataArray = dataMovieSearched
         addMovieListContainer(dataMovieSearched, applicationStatus.viewType)

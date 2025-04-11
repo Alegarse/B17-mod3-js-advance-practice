@@ -1,15 +1,16 @@
 import { containerDomElement, createMovieDetailsContainer } from "../util/dom"
+import { addMovieEmptyListContainer } from "../movie-list/movie-list"
 import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from "../components/movieCardElements"
 import { createCastCard } from "../components/castCardElements"
 import { getMovieDetailsData } from "../api/api"
-import { movieViewTypes, apiConfig, jobTraductions } from "../api/apiConfig"
+import { movieViewTypes, apiConfig, emptySearchText } from "../api/apiConfig"
 
 export async function addMovieDetailsContainer(movieId) {
 
   const movieData = await getMovieDetailsData(movieId)
+  console.log(movieData)
 
-  createDetailsMovieContainer(movieData)
-
+  movieData === undefined ? addMovieEmptyListContainer(emptySearchText.no_details) : createDetailsMovieContainer(movieData)
 }
 
 function createMovieViewElement(movieData, viewType, details = false) {
@@ -55,8 +56,8 @@ function createCastMovieElement(dataCastMovie) {
   castsContainer.classList = 'casts-elements'
 
   dataCastMovie.forEach(cast => {
-      const castElement = createCastCard(cast)
-      castsContainer.appendChild(castElement)
+    const castElement = createCastCard(cast)
+    castsContainer.appendChild(castElement)
   })
 
   castsElement.appendChild(titleCastsContainer)
@@ -79,8 +80,8 @@ function createCrewMovieElement(dataCrewMovie) {
   crewsContainer.classList = 'casts-elements'
 
   dataCrewMovie.forEach(crew => {
-      const crewElement = createCastCard(crew,1)
-      crewsContainer.appendChild(crewElement)
+    const crewElement = createCastCard(crew, 1)
+    crewsContainer.appendChild(crewElement)
   })
 
   crewsElement.appendChild(titleCrewContainer)

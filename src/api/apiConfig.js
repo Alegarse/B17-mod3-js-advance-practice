@@ -67,8 +67,12 @@ export const jobTraductions = {
     art_designer: 'Diseñador de maquetación',
     novel: 'Guionista',
     characters: 'Personajes',
-    first_assistant_director: 'Primer asistente dirección'
+    first_assistant_director: 'Primer asistente dirección',
+}
 
+export const emptySearchText = {
+    no_records: 'La búsqueda realizada no ha arrojado ningún resultado',
+    no_details: 'La película seleccionada no dispone de detalles'
 }
 
 export const apiConfig = {
