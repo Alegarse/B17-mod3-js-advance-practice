@@ -27,7 +27,7 @@ export function createMovieUtilsToolbar() {
     const toolbarElementDOM = document.querySelector('#app')
 
     const wrapperUtilsToolbar = document.createElement('div')
-    wrapperUtilsToolbar.classList = 'movie-toolbar-wrapper'
+    wrapperUtilsToolbar.classList = 'movie-toolbar-wrapper d-flex'
 
     const toolbarElements = document.createElement('div')
     toolbarElements.classList = 'container toolbar'

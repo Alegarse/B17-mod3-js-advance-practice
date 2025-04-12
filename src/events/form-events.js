@@ -1,8 +1,8 @@
 import { searchMovieId } from "../api/api";
 import { applicationStatus, emptySearchText } from "../api/apiConfig";
-import { containerDomElement } from "../util/dom";
 import { addMovieListContainer } from "../movie-list/movie-list";
 import { addMovieEmptyListContainer } from "../movie-list/movie-list";
+import { setViewElementsToolbar } from "../util/dom";
 
 export function createFormMovieListener(formId, inputId) {
 
@@ -26,6 +26,7 @@ async function searchMovieBytitle(movieTitle) {
 
     let attachedElement = document.querySelector('#movie-list-container')
     attachedElement.innerHTML = ''
+    setViewElementsToolbar('main')
 
     if (resultsNumber === 0) {
         // Dont clear -> applicationStatus.movieDataArray = undefined

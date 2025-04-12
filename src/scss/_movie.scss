@@ -1,5 +1,5 @@
 body {
-  background-color: black
+  background-color: black;
 }
 
 .movie-toolbar-wrapper {
@@ -10,6 +10,10 @@ body {
 
 #movie-list-container {
   @extend .mt-5;
+}
+
+.row {
+  margin: 0 auto;
 }
 
 .movie-grid,
@@ -100,17 +104,8 @@ body {
   padding: 0 !important;
 }
 
-
-.movie-details {
+.outside-details {
   position: relative;
-  display: grid;
-  grid-template-columns: 3fr 9fr;
-  color: white;
-  padding: 2.5rem;
-  z-index: 1;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
 
   .movie-backdrop-overlay {
     position: absolute;
@@ -119,6 +114,18 @@ body {
     z-index: 0;
     filter: none;
   }
+}
+
+.movie-details {
+  //position: relative;
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  color: white;
+  padding: 2.5rem;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 
   .movie-poster {
     z-index: 1;
@@ -173,7 +180,6 @@ body {
 }
 
 .cast-container {
-
   ::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;

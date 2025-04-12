@@ -42,7 +42,7 @@ export async function addMovieListContainer(movieDataArray, listView, start = tr
 
   // Element ROW to show movies
   const rowElement = document.createElement('div')
-  rowElement.classList = 'row'
+  rowElement.classList = 'row container'
 
   //For each movie need to create a movie card element
   movieDataArray.forEach(movieData => {

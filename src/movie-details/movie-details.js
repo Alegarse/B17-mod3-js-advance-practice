@@ -20,9 +20,13 @@ export async function addMovieDetailsContainer(movieId) {
 
 function createMovieViewElement(movieData, viewType, details = false) {
 
+  const outsideContainerElement = document.createElement('div')
+  outsideContainerElement.setAttribute('style', `background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
+  outsideContainerElement.classList = 'outside-details  d-flex'
+
   const movieElement = document.createElement('div')
-  movieElement.setAttribute('style', `background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
-  movieElement.classList = `${viewType}`
+  //movieElement.setAttribute('style', `background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
+  movieElement.classList = `${viewType} container`
 
   movieElement.appendChild(createMoviePoster(movieData.poster_path, movieData.id, true))
 
@@ -37,9 +41,11 @@ function createMovieViewElement(movieData, viewType, details = false) {
   movieElementOverlay.classList = 'movie-backdrop-overlay'
 
   movieElement.appendChild(containerInfoElement)
-  movieElement.appendChild(movieElementOverlay)
 
-  return movieElement
+  outsideContainerElement.appendChild(movieElement)
+  outsideContainerElement.appendChild(movieElementOverlay)
+
+  return outsideContainerElement
 }
 
 function createCastMovieElement(dataCastMovie) {
