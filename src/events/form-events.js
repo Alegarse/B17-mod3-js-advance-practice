@@ -1,8 +1,8 @@
-import { searchMovieId } from "../api/api";
-import { applicationStatus, emptySearchText } from "../api/apiConfig";
-import { addMovieListContainer } from "../movie-list/movie-list";
-import { addMovieEmptyListContainer } from "../movie-list/movie-list";
-import { setViewElementsToolbar } from "../util/dom";
+import { searchMovieId } from "../api/api"
+import { applicationStatus, emptySearchText } from "../api/apiConfig"
+import { addMovieListContainer } from "../movie-list/movie-list"
+import { addMovieEmptyListContainer } from "../movie-list/movie-list"
+import { setViewElementsToolbar } from "../util/dom"
 
 export function createFormMovieListener(formId, inputId) {
 
@@ -12,6 +12,13 @@ export function createFormMovieListener(formId, inputId) {
     formElement.addEventListener('submit', (event) => {
         event.preventDefault();
         const movieToSearch = inputElement.value
+        if (inputElement.value === '') {
+            inputElement.style.border = '2px solid red'
+            inputElement.placeholder = 'Nombre necesario'
+            return
+        }
+        inputElement.placeholder = 'Buscar pelicula'
+        inputElement.style.border = 'none' 
         searchMovieBytitle(movieToSearch)
         inputElement.value = ''
     })
