@@ -30,14 +30,19 @@ export function changeViewMovieElement(viewType) {
   })
 }
 
-export async function addMovieListContainer(movieDataArray, listView) {
+export async function addMovieListContainer(movieDataArray, listView, start = true) {
 
   // Element container for list movies
-  const moviesContainerElement = createMovieListContainer()
+  let moviesContainerElement
+  if (start) {
+    moviesContainerElement = createMovieListContainer()
+  } else {
+    moviesContainerElement = document.querySelector('#movie-list-container')
+  }
 
   // Element ROW to show movies
   const rowElement = document.createElement('div')
-  rowElement.classList = 'row'
+  rowElement.classList = 'row container'
 
   //For each movie need to create a movie card element
   movieDataArray.forEach(movieData => {
@@ -54,17 +59,11 @@ export async function addMovieListContainer(movieDataArray, listView) {
 }
 
 export function addMovieEmptyListContainer(text) {
-  // Element container for list movies
-  const moviesContainerElement = createMovieListContainer()
 
   // Element ROW to show movies
   const rowElement = document.createElement('div')
   rowElement.classList = 'row empty'
   rowElement.textContent = text
 
-  // Insert ROW into container
-  moviesContainerElement.appendChild(rowElement)
-
-  // Insert container into DOM
-  containerDomElement.appendChild(moviesContainerElement)
+  return rowElement
 }

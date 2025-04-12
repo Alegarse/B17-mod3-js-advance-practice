@@ -1,5 +1,5 @@
 body {
-  background-color: black
+  background-color: black;
 }
 
 .movie-toolbar-wrapper {
@@ -10,14 +10,17 @@ body {
 
 #movie-list-container {
   @extend .mt-5;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding-top: 0.625rem;  
+}
+
+.row {
+  margin: 0 auto;
 }
 
 .movie-grid,
 .movie-list,
 .movie-details {
   color: white;
+
   .movie-poster {
     width: 100%;
     overflow: hidden;
@@ -97,33 +100,36 @@ body {
   }
 }
 
-#movie-details-container {
+.details-container {
+  padding: 0 !important;
+}
+
+.outside-details {
   position: relative;
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
-}
 
-.movie-details-container {
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-.movie-backdrop-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 0;
-  filter: none;
+  .movie-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+    filter: none;
+  }
 }
 
 .movie-details {
-  position: relative;
+  //position: relative;
   display: grid;
   grid-template-columns: 3fr 9fr;
   color: white;
   padding: 2.5rem;
   z-index: 1;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  .movie-poster {
+    z-index: 1;
+  }
 
   .movie-poster:hover {
     opacity: 100%;
@@ -132,6 +138,7 @@ body {
 
   .movie-info {
     padding-inline: 1.25rem;
+    z-index: 1;
   }
 
   .movie-title {
@@ -158,7 +165,6 @@ body {
   flex-direction: column;
   position: relative;
   padding: 1.875rem;
-  background-color: rgba(255, 255, 255, 0.1);
 
   .cast-container-title {
     font-weight: 600;
@@ -174,7 +180,6 @@ body {
 }
 
 .cast-container {
-
   ::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
@@ -186,11 +191,11 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
+    background: #fba834a4;
     border-radius: 0.25rem;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.7);
+      background: #fba834;
       cursor: pointer;
     }
   }
@@ -200,7 +205,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 8.125rem;
+  min-width: 6.875rem;
   color: white;
   gap: 0.3125rem;
 
@@ -223,6 +228,7 @@ body {
   }
 
   .cast-charname {
+    font-size: 0.8125rem;
     text-align: center;
     font-style: italic;
     color: #eee;

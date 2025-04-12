@@ -1,8 +1,8 @@
 import { searchMovieId } from "../api/api";
 import { applicationStatus, emptySearchText } from "../api/apiConfig";
-import { containerDomElement } from "../util/dom";
 import { addMovieListContainer } from "../movie-list/movie-list";
 import { addMovieEmptyListContainer } from "../movie-list/movie-list";
+import { setViewElementsToolbar } from "../util/dom";
 
 export function createFormMovieListener(formId, inputId) {
 
@@ -25,15 +25,15 @@ async function searchMovieBytitle(movieTitle) {
     const resultsNumber = dataMovieSearched.length
 
     let attachedElement = document.querySelector('#movie-list-container')
-        if (attachedElement === null) attachedElement = document.querySelector('#movie-details-container')
-        if (attachedElement.isConnected)  containerDomElement.removeChild(attachedElement);
+    attachedElement.innerHTML = ''
+    setViewElementsToolbar('main')
 
     if (resultsNumber === 0) {
         // Dont clear -> applicationStatus.movieDataArray = undefined
         // Maybe at details Page and need a data to return to Main Page
-        addMovieEmptyListContainer(emptySearchText.no_records)
+        attachedElement.appendChild(addMovieEmptyListContainer(emptySearchText.no_records))
     } else {
         applicationStatus.movieDataArray = dataMovieSearched
-        addMovieListContainer(dataMovieSearched, applicationStatus.viewType)
+        addMovieListContainer(dataMovieSearched, applicationStatus.viewType, false)
     }
 }
