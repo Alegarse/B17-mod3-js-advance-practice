@@ -200,7 +200,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 8.125rem;
+  min-width: 6.875rem;
   color: white;
   gap: 0.3125rem;
 
@@ -223,6 +223,7 @@ body {
   }
 
   .cast-charname {
+    font-size: 0.8125rem;
     text-align: center;
     font-style: italic;
     color: #eee;
