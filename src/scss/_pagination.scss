@@ -19,16 +19,25 @@
   border: none;
 }
 
-.previous-page {
-    background-image: url('/arrow-badge-left.png');
+.pagination-arrow {
+  background: transparent;
+  border: none;
+  color: #FBA834;
+
+  &:disabled {
+    color: gray;
+  }
+  
 }
 
 .actual-page {
-    font-weight: 700;
-    font-size: 22px;
-    color: #FBA834;
+  font-weight: 700;
+  font-size: 22px;
+  color: #FBA834;
+}
+
+.previous-page {
 }
 
 .next-page {
-    background-image: url('/arrow-badge-right.png');
 }

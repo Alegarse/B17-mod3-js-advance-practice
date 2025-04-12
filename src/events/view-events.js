@@ -41,3 +41,16 @@ export function createMoviePosterListener() {
         }
     })
 }
+
+export function createPageClickListener() {
+
+    const clickContainer = document.querySelector('.pagination-tool')
+
+    clickContainer.addEventListener('click',(event) => {
+        const classSelected = event.target.classList.value
+        console.log(classSelected)
+        //const {results: movieDataArray} = await getMovieListData(event.target.value)
+        
+    })
+
+}

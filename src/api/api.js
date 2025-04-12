@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { apiConfig, defaultInit } from './apiConfig';
+import { apiConfig, defaultInit,applicationStatus } from './apiConfig';
 
-export async function getMovieListData(listType = defaultInit.movieListType, pageSelected = defaultInit.actualPage) {
+export async function getMovieListData(listType = defaultInit.movieListType, pageSelected = applicationStatus.actualPage) {
     try {
         let movieListUrl = apiConfig.baseUrl
         movieListUrl += `movie/${listType}`

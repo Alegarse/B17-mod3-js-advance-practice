@@ -26,11 +26,13 @@ async function launch() {
     // Set default List movie data viewed
     setDefaultSelectedListMovie('.movies-categories')
 
+    // Add pagination tool
+    createPaginationTool()
+    
     // Create event listeners for elements
     addEventListeners()
 
-    // Add pagination tool
-    createPaginationTool()
+    
 
 }
 
