@@ -3,12 +3,6 @@ import { applicationStatus } from "../api/apiConfig";
 // 0. Entry point
 export const containerDomElement = document.querySelector('#app')
 
-export function removeDomElement(domElement) {
-  if (domElement.isConnected) {
-    containerDomElement.removeChild(domElement);
-  }
-}
-
 export function setViewElementsToolbar(whereAmI) {
 
   const viewGridButton = document.querySelector('.grid-view')
@@ -38,13 +32,6 @@ export function createMovieListContainer() {
   const moviesContainerElement = document.createElement('div')
   moviesContainerElement.id = 'movie-list-container'
   moviesContainerElement.classList = 'container'
-  return moviesContainerElement
-}
-
-export function createMovieDetailsContainer() {
-  // Element container for list movies
-  const moviesContainerElement = document.createElement('div')
-  moviesContainerElement.id = 'movie-details-container'
   return moviesContainerElement
 }
 

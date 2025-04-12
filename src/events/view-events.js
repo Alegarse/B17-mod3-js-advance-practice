@@ -1,4 +1,4 @@
-import { removeDomElement, setViewElementsToolbar } from "../util/dom";
+import { setViewElementsToolbar } from "../util/dom";
 import { addMovieListContainer, changeViewMovieElement } from "../movie-list/movie-list";
 import { applicationStatus } from "../api/apiConfig";
 import { addMovieDetailsContainer } from "../movie-details/movie-details";
@@ -18,10 +18,9 @@ export function buttonBackHomeListener(elementSelected) {
     const backMainButton = document.querySelector(elementSelected)
 
     backMainButton.addEventListener('click', () => {
-        let attachedElement = document.querySelector('#movie-details-container')
-        if (attachedElement === null) attachedElement = document.querySelector('#movie-list-container')
-        removeDomElement(attachedElement)
-        addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType)
+        let attachedElement = document.querySelector('#movie-list-container')
+        attachedElement.innerHTML = ''
+        addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType, false)
         setViewElementsToolbar('main')
     })
 
@@ -36,7 +35,7 @@ export function createMoviePosterListener() {
             const movieId = target.getAttribute('data-movie-id')
             setViewElementsToolbar('details')
             const attachedElement = document.querySelector('#movie-list-container')
-            removeDomElement(attachedElement)
+            attachedElement.innerHTML = ''
             addMovieDetailsContainer(movieId)
         }
     })

@@ -10,14 +10,13 @@ body {
 
 #movie-list-container {
   @extend .mt-5;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding-top: 0.625rem;  
 }
 
 .movie-grid,
 .movie-list,
 .movie-details {
   color: white;
+
   .movie-poster {
     width: 100%;
     overflow: hidden;
@@ -97,25 +96,10 @@ body {
   }
 }
 
-#movie-details-container {
-  position: relative;
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
+.details-container {
+  padding: 0 !important;
 }
 
-.movie-details-container {
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-
-.movie-backdrop-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 0;
-  filter: none;
-}
 
 .movie-details {
   position: relative;
@@ -124,6 +108,21 @@ body {
   color: white;
   padding: 2.5rem;
   z-index: 1;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  .movie-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+    filter: none;
+  }
+
+  .movie-poster {
+    z-index: 1;
+  }
 
   .movie-poster:hover {
     opacity: 100%;
@@ -132,6 +131,7 @@ body {
 
   .movie-info {
     padding-inline: 1.25rem;
+    z-index: 1;
   }
 
   .movie-title {
@@ -158,7 +158,6 @@ body {
   flex-direction: column;
   position: relative;
   padding: 1.875rem;
-  background-color: rgba(255, 255, 255, 0.1);
 
   .cast-container-title {
     font-weight: 600;
@@ -186,11 +185,11 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
+    background: #fba834a4;
     border-radius: 0.25rem;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.7);
+      background: #fba834;
       cursor: pointer;
     }
   }

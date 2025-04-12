@@ -59,17 +59,11 @@ export async function addMovieListContainer(movieDataArray, listView, start = tr
 }
 
 export function addMovieEmptyListContainer(text) {
-  // Element container for list movies
-  const moviesContainerElement = createMovieListContainer()
 
   // Element ROW to show movies
   const rowElement = document.createElement('div')
   rowElement.classList = 'row empty'
   rowElement.textContent = text
 
-  // Insert ROW into container
-  moviesContainerElement.appendChild(rowElement)
-
-  // Insert container into DOM
-  containerDomElement.appendChild(moviesContainerElement)
+  return rowElement
 }

@@ -1,4 +1,4 @@
-import { containerDomElement, createMovieDetailsContainer } from "../util/dom"
+import { containerDomElement, createMovieListContainer } from "../util/dom"
 import { addMovieEmptyListContainer } from "../movie-list/movie-list"
 import { createMoviePoster, createMovieTitle, createMovieData, createMovieOverview } from "../components/movieCardElements"
 import { createCastCard } from "../components/castCardElements"
@@ -9,22 +9,21 @@ export async function addMovieDetailsContainer(movieId) {
 
   const movieData = await getMovieDetailsData(movieId)
 
-  movieData === undefined ? addMovieEmptyListContainer(emptySearchText.no_details) : createDetailsMovieContainer(movieData)
+  if (movieData === undefined) {
+    let attachedElement = document.querySelector('#movie-list-container')
+    attachedElement.innerHTML = ''
+    attachedElement.appendChild(addMovieEmptyListContainer(emptySearchText.no_details))
+  } else {
+    createDetailsMovieContainer(movieData)
+  }
 }
 
 function createMovieViewElement(movieData, viewType, details = false) {
 
-  const movieElementContainer = document.createElement('div')
-
-  movieElementContainer.classList = 'movie-details-container container'
-  movieElementContainer.setAttribute('style', `background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
-
-  const movieElementOverlay = document.createElement('div')
-  movieElementOverlay.classList = 'movie-backdrop-overlay container'
-
   const movieElement = document.createElement('div')
+  movieElement.setAttribute('style', `background-image: url(${apiConfig.backdropBaseUrl}${movieData.backdrop_path})`)
+  movieElement.classList = `${viewType}`
 
-  movieElement.classList = `${viewType} container`
   movieElement.appendChild(createMoviePoster(movieData.poster_path, movieData.id, true))
 
   const containerInfoElement = document.createElement('div')
@@ -34,12 +33,13 @@ function createMovieViewElement(movieData, viewType, details = false) {
   containerInfoElement.appendChild(createMovieData(movieData.vote_average, movieData.release_date))
   containerInfoElement.appendChild(createMovieOverview(movieData.overview, details))
 
+  const movieElementOverlay = document.createElement('div')
+  movieElementOverlay.classList = 'movie-backdrop-overlay'
+
   movieElement.appendChild(containerInfoElement)
+  movieElement.appendChild(movieElementOverlay)
 
-  movieElementContainer.appendChild(movieElementOverlay)
-  movieElementContainer.appendChild(movieElement)
-
-  return movieElementContainer
+  return movieElement
 }
 
 function createCastMovieElement(dataCastMovie) {
@@ -93,7 +93,8 @@ function createCrewMovieElement(dataCrewMovie) {
 export function createDetailsMovieContainer(movieData) {
 
   // Element container for show movie details
-  const moviesContainerElement = createMovieDetailsContainer()
+  const moviesContainerElement = document.querySelector('#movie-list-container')
+  moviesContainerElement.classList += ' details-container'
 
   const movieDetailsElement = createMovieViewElement(movieData, movieViewTypes.Details, true)
   const movieCastElements = createCastMovieElement(movieData.credits.cast)
