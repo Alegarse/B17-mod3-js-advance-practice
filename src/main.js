@@ -32,8 +32,6 @@ async function launch() {
     // Create event listeners for elements
     addEventListeners()
 
-    
-
 }
 
 launch()
