@@ -8,7 +8,6 @@ import { movieViewTypes, apiConfig, emptySearchText } from "../api/apiConfig"
 export async function addMovieDetailsContainer(movieId) {
 
   const movieData = await getMovieDetailsData(movieId)
-  console.log(movieData)
 
   movieData === undefined ? addMovieEmptyListContainer(emptySearchText.no_details) : createDetailsMovieContainer(movieData)
 }

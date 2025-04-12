@@ -1,7 +1,6 @@
 import { applicationStatus } from "../api/apiConfig";
 import { getMovieListData } from "../api/api";
 import { addMovieListContainer } from "../movie-list/movie-list";
-import { containerDomElement } from "../util/dom";
 
 export function createMovieListChangeListener(elementSelected) {
 
@@ -12,9 +11,7 @@ export function createMovieListChangeListener(elementSelected) {
         applicationStatus.movieDataArray = movieDataArray
         applicationStatus.movieListing = event.target.value
         const attachedElement = document.querySelector('#movie-list-container')
-            if (attachedElement.isConnected) {
-                containerDomElement.removeChild(attachedElement);
-            }
-        addMovieListContainer(movieDataArray,applicationStatus.viewType)
+        attachedElement.innerHTML = ''
+        addMovieListContainer(movieDataArray,applicationStatus.viewType,false)
     })
 }

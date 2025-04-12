@@ -30,10 +30,15 @@ export function changeViewMovieElement(viewType) {
   })
 }
 
-export async function addMovieListContainer(movieDataArray, listView) {
+export async function addMovieListContainer(movieDataArray, listView, start = true) {
 
   // Element container for list movies
-  const moviesContainerElement = createMovieListContainer()
+  let moviesContainerElement
+  if (start) {
+    moviesContainerElement = createMovieListContainer()
+  } else {
+    moviesContainerElement = document.querySelector('#movie-list-container')
+  }
 
   // Element ROW to show movies
   const rowElement = document.createElement('div')
