@@ -109,6 +109,4 @@ export function createDetailsMovieContainer(movieData) {
   moviesContainerElement.appendChild(movieDetailsElement)
   moviesContainerElement.appendChild(movieCastElements)
   moviesContainerElement.appendChild(movieCrewElement)
-
-  containerDomElement.appendChild(moviesContainerElement)
 }
