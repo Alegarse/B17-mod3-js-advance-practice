@@ -9,7 +9,7 @@
 }
 
 .pagination-tool button {
-    display: inline-block;
+  display: inline-block;
   margin-right: 1rem;
   width: 2rem;
   aspect-ratio: 1;
@@ -22,22 +22,15 @@
 .pagination-arrow {
   background: transparent;
   border: none;
-  color: #FBA834;
+  color: #fba834;
 
   &:disabled {
     color: gray;
   }
-  
 }
 
 .actual-page {
   font-weight: 700;
   font-size: 22px;
-  color: #FBA834;
-}
-
-.previous-page {
-}
-
-.next-page {
+  color: #fba834;
 }

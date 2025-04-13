@@ -11,7 +11,7 @@ export const movieViewTypes = {
     Details: 'movie-details',
 }
 
-export const defaultInit = {
+export let defaultInit = {
     movieListType: 'upcoming',
     listView: 'movie-grid',
     actualPage: 1,
@@ -22,6 +22,8 @@ export let applicationStatus = {
     actualPage: defaultInit.actualPage,
     movieListing: defaultInit.movieListType,
     movieDataArray: undefined,
+    inSearchedMovie: false,
+    movieSearched: '',
 }
 
 export const jobTraductions = {

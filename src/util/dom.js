@@ -43,6 +43,6 @@ export function setDefaultSelectedListMovie(elementDom) {
 
 }
 
-function setVisibility(domElement, visible = true) {
+export function setVisibility(domElement, visible = true) {
   visible ? domElement.removeAttribute('hidden') : domElement.setAttribute('hidden', true)
 }

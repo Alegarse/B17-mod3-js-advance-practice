@@ -1,7 +1,8 @@
-import { setViewElementsToolbar } from "../util/dom";
+import { setViewElementsToolbar, setVisibility } from "../util/dom";
 import { addMovieListContainer, changeViewMovieElement } from "../movie-list/movie-list";
 import { applicationStatus } from "../api/apiConfig";
 import { addMovieDetailsContainer } from "../movie-details/movie-details";
+import { changeDataMoviesFromPagination } from "../movie-list/movie-pagination";
 
 export function createViewChangeListener(elementSelected, viewType) {
 
@@ -20,6 +21,8 @@ export function buttonBackHomeListener(elementSelected) {
     backMainButton.addEventListener('click', () => {
         let attachedElement = document.querySelector('#movie-list-container')
         attachedElement.innerHTML = ''
+        const pagToolElement = document.querySelector('.pagination-tool')
+        setVisibility(pagToolElement)
         addMovieListContainer(applicationStatus.movieDataArray, applicationStatus.viewType, false)
         setViewElementsToolbar('main')
     })
@@ -36,20 +39,34 @@ export function createMoviePosterListener() {
             setViewElementsToolbar('details')
             const attachedElement = document.querySelector('#movie-list-container')
             attachedElement.innerHTML = ''
+            const pagToolElement = document.querySelector('.pagination-tool')
+            setVisibility(pagToolElement,false)
             addMovieDetailsContainer(movieId)
         }
     })
 }
 
-export function createPageClickListener() {
+export async function createPageClickListener() {
 
     const clickContainer = document.querySelector('.pagination-tool')
 
     clickContainer.addEventListener('click',(event) => {
         const classSelected = event.target.classList.value
-        console.log(classSelected)
-        //const {results: movieDataArray} = await getMovieListData(event.target.value)
-        
-    })
 
+        if (classSelected.includes('next-page')) {
+            applicationStatus.actualPage += 1
+            document.querySelector('.actual-page').textContent = applicationStatus.actualPage
+            document.querySelector('.previous-page').removeAttribute('disabled')
+        }
+        if (classSelected.includes('previous-page')) {
+            if (applicationStatus.actualPage > 1) {
+                applicationStatus.actualPage -= 1 
+                document.querySelector('.actual-page').textContent = applicationStatus.actualPage
+                document.querySelector('.next-page').removeAttribute('disabled')
+                if(applicationStatus.actualPage === 1) document.querySelector('.previous-page').setAttribute('disabled', true)
+            }
+        }
+        changeDataMoviesFromPagination()
+        window.scrollTo({ top: 0, behavior: 'smooth' })        
+    })
 }
