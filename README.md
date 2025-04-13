@@ -1,6 +1,6 @@
 # JavaScript
 Repositorio que contiene la parte de prácticas avanzadas JavaScript.   
-#### [Ver Online](https://js-advance-practice.arenalsoft.es/)   
+#### [Visualización online del proyecto](https://js-advance-practice.arenalsoft.es/)   
    
 ## Lenguaje: JavaScript
    
