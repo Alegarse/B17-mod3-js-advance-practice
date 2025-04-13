@@ -18,7 +18,11 @@ Click:
 - Boton volver a listado desde detalles
 
 Change:   
-- Selector de tipo de listado   
+- Selector de tipo de listado
+
+**AddOns realizados:**   
+- Uso de formulario de búsqueda de películas   
+- Barra de paginación para cargar más resultados
    
 ---
 ## Diagrama de funcionamiento 
