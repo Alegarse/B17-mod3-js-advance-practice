@@ -2,7 +2,9 @@
 Repositorio que contiene la parte de prácticas avanzadas JavaScript.   
 #### [Visualización online del proyecto](https://js-advance-practice.arenalsoft.es/)   
    
-## Lenguaje: JavaScript
+## Tecnologías Utilizadas
+
+[![My Skills](https://skillicons.dev/icons?i=html,css,js)](https://skillicons.dev)
    
 ## Tareas a realizar   
 **Llamadas API:**   
