@@ -4,7 +4,7 @@ Repositorio que contiene la parte de prácticas avanzadas JavaScript.
    
 ## Tecnologías Utilizadas
 
-[![My Skills](https://skillicons.dev/icons?i=html,css,js)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,git,github,vscode)](https://skillicons.dev)
    
 ## Tareas a realizar   
 **Llamadas API:**   
