@@ -21,8 +21,8 @@ Click:
 Change:   
 - Selector de tipo de listado   
 
-
-**AddOns realizados:**   
+---
+**Extras realizados:**   
 - Uso de formulario de búsqueda de películas   
 - Barra de paginación para cargar más resultados
    
