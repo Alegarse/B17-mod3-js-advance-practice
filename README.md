@@ -11,6 +11,7 @@ Repositorio que contiene la parte de prácticas avanzadas JavaScript.
 - Peticion de datos de peliculas para las 4 modalidades
 - Petición de datos de pelicula por id
     
+
 **Eventos:**   
 Click:   
 - Cambio de visualización listado
@@ -18,7 +19,8 @@ Click:
 - Boton volver a listado desde detalles
 
 Change:   
-- Selector de tipo de listado
+- Selector de tipo de listado   
+
 
 **AddOns realizados:**   
 - Uso de formulario de búsqueda de películas   
