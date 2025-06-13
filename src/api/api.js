@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { apiConfig, defaultInit,applicationStatus } from './apiConfig';
+import { apiConfig, applicationStatus } from './apiConfig';
 
 export async function getMovieListData(listType = applicationStatus.movieListing, pageSelected = applicationStatus.actualPage) {
     try {
