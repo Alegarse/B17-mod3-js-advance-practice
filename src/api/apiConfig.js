@@ -78,7 +78,7 @@ export const emptySearchText = {
 }
 
 export const apiConfig = {
-    apiKey: '2d5c6f63ff2eee3baf3a6c8e6464b8ba',
+    apiKey: '2344c21a12275d6508e53c3f4582ba36',
     langIso: 'es-ES',
     baseUrl: 'https://api.themoviedb.org/3/',
     posterBaseUrl: 'http://image.tmdb.org/t/p/w500/',
