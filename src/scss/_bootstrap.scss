@@ -1,13 +1,16 @@
-@import "variables";
-@import "bootstrap/scss/bootstrap";
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
 
 // custom
-@import "header";
-@import "footer";
-@import "buttons";
+@import 'header';
+@import 'footer';
+@import 'buttons';
 
-// movie
-@import "movie";
+// pages
+@import 'movie';
+@import 'about';
+@import 'notFound';
+@import '_detailsMovie';
 
 //pagination
-@import "pagination";
+@import 'pagination';

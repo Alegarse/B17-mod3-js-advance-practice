@@ -1,0 +1,55 @@
+.movie-details {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  color: white;
+  padding: 2.5rem;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+
+  .movie-poster {
+    z-index: 1;
+    border-radius: $border-radius;
+  }
+
+  .movie-poster:hover {
+    opacity: 100%;
+    cursor: default;
+  }
+
+  .movie-info {
+    padding-inline: 1.25rem;
+    z-index: 1;
+  }
+
+  .movie-title {
+    font-size: 2.5rem;
+  }
+
+  .movie-overview {
+    font-size: 1.2rem;
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  .movie-data {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.outside-details {
+  position: relative;
+
+  .movie-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+    filter: none;
+  }
+}
